@@ -1,3 +1,35 @@
+const analyzevoterData =(voters) => {
+  return voters.reduce((acc,voters) =>  {
+    const {age,voted} = voter ;
+    
+    if (age >=18 && age <= 25) {
+      acc.numYoungPeople += 1;
+      if (voted) {
+        acc.numYoungVotes += 1;
+      }
+    }
+    
+    if (age >=26 && age <= 35) {
+      acc.numMidsPeople += 1;
+      if (voted) {
+        acc.numMidVotesPeople += 1;
+      }
+    }
+    
+    if (age >=36) {
+      acc.numOldsPeople += 1;
+      if (voted) {
+        accnumOldVotesPeople +=1;
+      }
+    }
+    
+    return acc ; 
+
+
+  
+  });
+};
+
 const voters = [
   {name:'Bob' , age: 30, voted: true},
   {name:'Jake' , age: 32, voted: true},
