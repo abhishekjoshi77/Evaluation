@@ -1,32 +1,39 @@
-const analyzevoterData =(voters) => {
-  return voters.reduce((acc,voters) =>  {
-    const {age,voted} = voter ;
-    
-    if (age >=18 && age <= 25) {
+const analyzeVoterData = (voters) => {
+  return voters.reduce((acc, voter) => {
+    const { age, voted } = voter;
+
+    // Count Young Voters (18-25)
+    if (age >= 18 && age <= 25) {
       acc.numYoungPeople += 1;
       if (voted) {
         acc.numYoungVotes += 1;
       }
     }
-    
-    if (age >=26 && age <= 35) {
+
+    // Count Middle-Aged Voters (26-35)
+    if (age >= 26 && age <= 35) {
       acc.numMidsPeople += 1;
       if (voted) {
         acc.numMidVotesPeople += 1;
       }
     }
-    
-    if (age >=36) {
+
+    // Count Older Voters (36 and above)
+    if (age >= 36) {
       acc.numOldsPeople += 1;
       if (voted) {
-        accnumOldVotesPeople +=1;
+        acc.numOldVotesPeople += 1;
       }
     }
-    
-    return acc ; 
 
-
-  
+    return acc;
+  }, {
+    numYoungVotes: 0,
+    numYoungPeople: 0,
+    numMidVotesPeople: 0,
+    numMidsPeople: 0,
+    numOldVotesPeople: 0,
+    numOldsPeople: 0,
   });
 };
 
@@ -46,4 +53,5 @@ const voters = [
 ];
 
 console.log(analyzeVoterData(voters));
+
 
