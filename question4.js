@@ -1,19 +1,12 @@
-function deepCopy(xyz) {
-  if (typeof xyz !== 'object' || xyz === null) {
-    return xyz; // primitive values or null can be returned as is
+const obj = {
+  name: "John",
+  address: {
+    city: "New York",
+    zip: 10001
   }
+};
 
-  if (Array.isArray(xyz)) {
-    return xyz.map(deepCopy); // recursively copy each element in the array
-  }
+const copy = deepCopy(obj);
+console.log(copy);
+// Output: { name: "John", address: { city: "New York", zip: 10001 } }
 
-  const copiedObj = {};
-
-  for (const key in xyz) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      copiedObj[key] = deepCopy(obj[key]); // recursively copy each property
-    }
-  }
-
-  return copiedObj;
-}
